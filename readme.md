@@ -1,3 +1,12 @@
+# Portal MQ : Distributed Message Queue from Scratch
+This project depicts how a message queue functions in the real world. The implementation supports cluster mode of operation and aims for high availability with minimum consistency errors.
+
+## Components:
+1. Brokers: The brokers are HTTP servers built using flask, which communicate with other brokers using a control plane. They use sqlite as a database to store messages.
+2. Control Plane : The control plane is a virtual layer in zookeeper where we store metadata and various stateful information to ensure proper coordination between different brokers.
+3. Client API: The client API is a REST based Abstraction layer , that allows the user to import the message queue functionality via classes and objects represented by Producers and Consumers.
+5. Distributed locks: Used in both the broker and client API to properly coordinate certain actions.
+
 ## Setup
 
 ### Zookeeper configuration
@@ -11,10 +20,11 @@ python3 server.py 5000
 python3 server.py 5001
 python3 server.py 5002
 ```
-### Requirements:
-- Zookeeper (kazoo - python)
+### Tech Stack:
+- Zookeeper (kazoo - python) 
 - REST API (flask - python)
 - Threading (python)
+- SQLite (database)
 
 ### Why Zookeeper is important ?
 
